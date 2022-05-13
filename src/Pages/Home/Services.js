@@ -40,16 +40,16 @@ const Services = () => {
                     ></Service>)
                 }
             </div>
-            <div class="card card-side mt-20 px-12 ">
+            <div className="card card-side mt-20 px-12 ">
                 <figure>
                     <img style={{height:"376px", width:"400px"}} className="rounded" src={treatment}alt="Movie"/>
 
                 </figure>
-                <div class="card-body mt-10 hidden lg:block">
-                    <h2 class="card-title font-bold text-2xl">Exceptional Dental Care, on Your Terms</h2>
+                <div className="card-body mt-10 hidden lg:block">
+                    <h2 className="card-title font-bold text-2xl">Exceptional Dental Care, on Your Terms</h2>
                     <p>Exceptional Dental Care is a cheerful dental practice, offering high-quality dental care in the heart of Spearwood. We are wheelchair-accessible, caring and affordable. We use new technologies for the comfort of our patients.</p>
-                    <div class="card-actions ">
-                        <button class="btn btn-primary mb-7">Get Started</button>
+                    <div className="card-actions ">
+                        <button className="btn btn-primary mb-7">Get Started</button>
                     </div>
                 </div>
             </div>
