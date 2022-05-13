@@ -45,7 +45,7 @@ const Services = () => {
                     <img style={{height:"376px", width:"400px"}} className="rounded" src={treatment}alt="Movie"/>
 
                 </figure>
-                <div class="card-body mt-10">
+                <div class="card-body mt-10 hidden lg:block">
                     <h2 class="card-title font-bold text-2xl">Exceptional Dental Care, on Your Terms</h2>
                     <p>Exceptional Dental Care is a cheerful dental practice, offering high-quality dental care in the heart of Spearwood. We are wheelchair-accessible, caring and affordable. We use new technologies for the comfort of our patients.</p>
                     <div class="card-actions ">
