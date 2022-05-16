@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import {useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
@@ -16,6 +16,10 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
+      const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+      );
+
       let signInError;
       const navigate = useNavigate();
       const location = useLocation();
@@ -26,17 +30,27 @@ const Login = () => {
     }
 
     if(error || gError){
-        signInError=<p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+        signInError=<p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
     }
 
     if(loading || gLoading){
         return <Loading></Loading>
     }
 
+   
+
     const onSubmit = data => {
         console.log(data)
-        signInWithEmailAndPassword(data.email, data.password);
+        const email = data.email;
+        const password = data.password;
+        signInWithEmailAndPassword(email, password);
     };
+
+    const resetPassword = async (data) => {
+        const email = data.email;
+        await sendPasswordResetEmail(email)
+        alert('Sent Email')
+    }
 
     return (
         <div className='flex justify-center items-center h-screen'>
@@ -96,9 +110,12 @@ const Login = () => {
                         </div>
                       
                         {signInError}
+                        
                         <input className='btn w-full max-w-xs text-white' type="submit" value="Login"/>
+            
                     </form>
                     <p><small>New to Doctors Portal ?? <Link className='text-primary' to="/signup"> Create New Account</Link></small></p>
+                    <p><small>Forget Password ?? <Link className='text-primary' to="/signup" onClick={resetPassword}> Reset Password</Link></small></p>
                     <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}

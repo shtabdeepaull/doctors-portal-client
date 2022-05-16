@@ -14,7 +14,7 @@ const Signup = () => {
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
 
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
@@ -41,7 +41,7 @@ const Signup = () => {
         navigate('/appointment');
     };
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-2xl text-center font-bold">Sign Up</h2>
